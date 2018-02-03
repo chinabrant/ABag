@@ -3,6 +3,8 @@ import 'package:demo02/modules/home/strategy_item_widget.dart';
 import 'package:demo02/models/strategy_item.dart';
 import 'package:demo02/api/base_api.dart';
 import 'dart:async';
+import 'package:demo02/modules/ABRouter.dart';
+import 'package:fluro/fluro.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -19,6 +21,12 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
 
   List<StrategyModel> list = <StrategyModel>[];
+
+  HomePageState() {
+    final router = new Router();
+    ABRouter.defineRoutes(router);
+    ABRouter.router = router;
+  }
 
   @override
   void initState() {
@@ -44,7 +52,8 @@ class HomePageState extends State<HomePage> {
 
   _tapItem(StrategyModel strategyModel) {
     print('点击了标题：${strategyModel.title}');
-    showAlert(strategyModel.title);
+//    showAlert(strategyModel.title);
+    ABRouter.router.navigateTo(context, '/strategy/111');
   }
 
   // 显示一个 Dialog

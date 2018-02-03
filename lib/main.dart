@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:demo02/modules/home/HomePage.dart';
+import 'package:fluro/fluro.dart';
+import 'package:demo02/modules/ABRouter.dart';
 
 void main() {
   runApp(
@@ -28,6 +30,10 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
 
   final List<ChatMessage> _messages = <ChatMessage>[];
   final TextEditingController _textController = new TextEditingController();
+  
+  ChatScreenState() {
+
+  }
 
   void _handleSubmitted(String text) {
     _textController.clear();
